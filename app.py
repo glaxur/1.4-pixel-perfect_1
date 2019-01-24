@@ -14,11 +14,19 @@ def index():
     post_file.close()
 
     # 2. Create a new list that will hold all the html for your blog posts
-
+    blog_posts = [ ]
     # 3. Open the csv file and read it using the CSV library. This will give you a list of rows.
+    with open('data.csv') as csvfile:
+        data_csv = csv.DictReader(csvfile)
+        # for row in data_csv:
+        #     print(image["{{image}}"], category["{{category}}"], title["{{title}}"],
+        #           body["{{body}}"], author["{{author}}"], date["{{date}}"])
     # See: https://docs.python.org/3/library/csv.html#csv.DictReader
 
     # 4. Loop over each row in the CSV. Each row is a blog post.
+    # for row in data_csv: ------------done above-------------
+        #print(row["{{image}}"],row["{{category}}"], row["{{title}}"],
+              #row["{{body}}"], row["{{author}}"], row["{{date}}"])
 
     # 5. Take post_html and replace {{title}} {{body}} {{author}} with the data in each blog post csv row
 
@@ -30,7 +38,7 @@ def index():
     index_file = open('index.html', 'r')
     index_html = index_file.read()
 
-    index_html.replace('{{blog_posts}}', blog_post_html)
+    # index_html.replace('{{blog_posts}}', blog_post_html)
 
     index_file.close()
 
